@@ -17,12 +17,12 @@ export default class CorreiosController {
     let cep = req.params.cep.replace('-', '')
 
     if (cep.length != 8) {
-      res.status(401).json({ message: 'CEP inválido', status: 401 })
+      res.status(400).json({ message: 'CEP inválido', status: 400 })
     } else {
       const valido = await cepValido(cep)
 
       if (valido.erro)
-        res.status(400).json({ message: 'CEP não encontrado', status: 400 })
+        res.status(404).json({ message: 'CEP não encontrado', status: 404 })
       else
         res.status(200).json({ valido, status: 200 })
     }
