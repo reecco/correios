@@ -4,7 +4,7 @@ import correios from './correiosRoutes.js'
 
 const routes = (app) => {
   app.route('/').get((req, res) => {
-    res.status(200).json({ message: 'API para consulta de CEP e rastreio de encomendas do Correios', status: 200 })
+    res.status(200).json({ message: 'API para consulta de CEP e rastreio de encomendas dos Correios', status: 200 })
   })
 
   app.use(
