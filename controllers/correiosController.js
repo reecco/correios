@@ -5,12 +5,14 @@ export default class CorreiosController {
     let cod = req.params.cod
 
     const encomenda = await rastreio(cod)
+
+    const date = new Date()
     
     res.setHeader('Cache-Control', 'max-age=3600 stale-while-revalidate')
 
-    if (encomenda[0].mensagem) return res.status(404).json({ message: encomenda[0], status: 404 })
+    if (encomenda[0].mensagem) return res.status(404).json({ message: encomenda[0], dateCreated: date, status: 404 })
 
-    return res.status(200).json({ encomenda, status: 200 })
+    return res.status(200).json({ encomenda, dateCreated: date, status: 200 })
   } //OU341933668BR
 
   static async consultaCep(req, res) {
