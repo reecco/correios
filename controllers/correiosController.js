@@ -8,7 +8,7 @@ export default class CorreiosController {
 
     const date = new Date()
     
-    res.setHeader('Cache-Control', 'max-age=3600 stale-while-revalidate')
+    res.setHeader('Cache-Control', 's-maxage=3600 stale-while-revalidate')
 
     if (encomenda[0].mensagem) return res.status(404).json({ message: encomenda[0], dateCreated: date, status: 404 })
 
