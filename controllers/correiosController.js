@@ -5,6 +5,8 @@ export default class CorreiosController {
     let cod = req.params.cod
 
     const encomenda = await rastreio(cod)
+    
+    res.setHeader('Cache-Control', 'max-age=3600 stale-while-revalidate')
 
     if (encomenda[0].mensagem) return res.status(404).json({ message: encomenda[0], status: 404 })
 
